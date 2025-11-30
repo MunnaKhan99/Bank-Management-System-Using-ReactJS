@@ -1,0 +1,154 @@
+.backLink {
+    margin-bottom: 12px;
+    color: #4080FC;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Main container */
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.headerIcon {
+    border-radius: 5px;
+    color: #D92B2B; /* red for withdraw */
+    background-color: #FCE4E4;
+    padding: 10px;
+}
+
+.subtitle {
+    margin-top: 4px;
+    margin-bottom: 20px;
+    color: #829EFC;
+}
+
+/* Form container */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input field group */
+.inputField {
+    display: flex;
+    flex-direction: column;
+}
+
+.legend {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+    color: #829EFC;
+}
+
+.inputBox {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 2px solid #829EFC;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+.inputBox:focus {
+    border-color: #4080FC;
+}
+
+/* ========================================================= */
+/* NEW TEXTAREA STYLE — identical to Deposit version         */
+/* ========================================================= */
+
+.textAreaWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.textAreaIcon {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 20px;
+    color: #829EFC;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.textArea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 12px 12px 42px; /* space for icon */
+    border: 2px solid #829EFC;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    resize: vertical;
+}
+
+.textArea:focus {
+    border-color: #4080FC;
+}
+
+/* Buttons */
+.btnRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Cancel button */
+.cancelBtn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 49%;
+    color: #4080FC;
+    background-color: #DBEAFE;
+}
+
+.cancelBtn:hover {
+    background: #cbdff9;
+}
+
+/* Withdraw button */
+.submitBtn {
+    padding: 10px 18px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 49%;
+    background-color: #D92B2B; /* red theme */
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
+}
