@@ -1,0 +1,71 @@
+.home-total-balance-container {
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #155BF9;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.total-balance-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #c7c5c5;
+    margin-bottom: 6px;
+}
+
+/* Balance Amount */
+.total-balance {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Buttons row */
+.home-total-balance-container>div {
+    display: flex;
+    gap: 12px;
+}
+
+/* Deposit button */
+.deposit-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background-color: #4377F5;
+    /* border: 1px solid #A9C9FF; */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+}
+
+.deposit-btn:hover {
+    background-color: #6b94f5;
+}
+
+/* Withdraw button */
+.withdraw-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background-color: #4377F5;
+    /* border: 1px solid #FFB4B4; */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+}
+
+.withdraw-button:hover {
+    background-color: #6b94f5;
+}
+
+/* Icon sizes */
+.deposit-icon,
+.withdraw-icon {
+    font-size: 20px;
+}

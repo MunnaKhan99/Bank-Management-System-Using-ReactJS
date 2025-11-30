@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+# Ignored React components
 /src/components/Deposit
 /src/components/Home
 /src/components/pages
