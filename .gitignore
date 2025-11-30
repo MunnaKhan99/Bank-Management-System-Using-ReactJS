@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/src/components/Deposit
+/src/components/Home
+/src/components/pages
+/src/components/Transactions
+/src/components/Withdraw
+/src/components/NotFound
+/src/components/Sidebar
