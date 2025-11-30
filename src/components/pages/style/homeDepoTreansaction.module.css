@@ -1,0 +1,59 @@
+/* Main container holding 3 cards */
+.home-depo-withdraw-container {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+/* Card style */
+.home-depo-card {
+    flex: 1;
+    min-width: 160px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* Top row inside card: icon + label */
+.home-depo-top-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+/* Amount text inside card */
+.home-depo-amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Icons */
+.deposit-icon,
+.withdraw-icon,
+.transaction-icon {
+    font-size: 35px;
+    padding: 5px;
+    border-radius: 30%;
+}
+.deposit-icon{
+    background-color: #DBFCE7;
+
+}
+.withdraw-icon{
+    background-color: #FFE2E2;
+}
+.transaction-icon{
+    background-color:#DBEAFE ;
+}
+/* Hover effect on card */
+.home-depo-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+    transform: translateY(-2px);
+    transition: 0.2s ease;
+}
