@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaDollarSign } from "react-icons/fa";
 import { MdRequestPage } from "react-icons/md";
+import { FaArrowLeft } from "react-icons/fa";
+
 
 import styles from './deposit.module.css';
+import { useNavigate } from 'react-router';
 
-const Deposit = () => {
+const Deposit = ({ handleDeposit }) => {
+    const navigate = useNavigate();
+    const [depositAmount, setDepositAmount] = useState(0);
+    const [description, setDescription] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleDeposit(depositAmount, description)
+
+        setDepositAmount("");
+        setDescription("");
+
+    }
+    const handleDepoCancle = (e) =>{
+        e.preventDefault();
+        setDepositAmount("");
+        setDescription("");
+    }
+    const handleNavigate = () =>{
+        navigate("/")
+    }
     return (
         <div>
-            <div className={styles.backLink}>Back to Dashboard</div>
+            <div className={styles.backLink} onClick={handleNavigate}><FaArrowLeft/><span>Back to Dashboard</span></div>
 
             <div className={styles.depositContainer}>
                 <div className={styles.depositHeader}>
@@ -17,7 +40,7 @@ const Deposit = () => {
 
                 <p className={styles.depositSubtitle}>Add money to your account</p>
 
-                <div className={styles.depositForm}>
+                <form className={styles.depositForm} onSubmit={handleSubmit}>
                     {/* Amount input */}
                     <div className={styles.inputField}>
                         <span className={styles.fieldLegend}>Amount</span>
@@ -37,6 +60,9 @@ const Deposit = () => {
                                 step="0.01"
                                 required
                                 className={styles.inputBox}
+
+                                value={depositAmount}
+                                onChange={(e) => setDepositAmount(e.target.value)}
                             />
                         </div>
                     </div>
@@ -51,6 +77,8 @@ const Deposit = () => {
                             <textarea
                                 className={styles.textArea}
                                 placeholder="Add a description..."
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
                     </div>
@@ -58,11 +86,11 @@ const Deposit = () => {
 
                     {/* Buttons */}
                     <div className={styles.btnRow}>
-                        <button className={styles.cancelBtn}>Cancel</button>
-                        <button className={styles.depositBtn}>Deposit</button>
+                        <button type='button' className={styles.cancelBtn} onClick={handleDepoCancle}>Cancel</button>
+                        <button type='submit' className={styles.depositBtn} >Deposit</button>
                     </div>
 
-                </div>
+                </form>
             </div>
         </div>
     );
