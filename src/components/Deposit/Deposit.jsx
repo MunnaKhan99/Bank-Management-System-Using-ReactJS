@@ -12,25 +12,29 @@ const Deposit = ({ handleDeposit }) => {
     const [depositAmount, setDepositAmount] = useState(0);
     const [description, setDescription] = useState("");
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+
         handleDeposit(depositAmount, description)
 
         setDepositAmount("");
         setDescription("");
 
     }
-    const handleDepoCancle = (e) =>{
+    const handleDepoCancle = (e) => {
         e.preventDefault();
         setDepositAmount("");
         setDescription("");
     }
-    const handleNavigate = () =>{
+    const handleNavigate = () => {
         navigate("/")
     }
     return (
         <div>
-            <div className={styles.backLink} onClick={handleNavigate}><FaArrowLeft/><span>Back to Dashboard</span></div>
+            <div className={styles.backLink} onClick={handleNavigate}><FaArrowLeft /><span>Back to Dashboard</span></div>
 
             <div className={styles.depositContainer}>
                 <div className={styles.depositHeader}>

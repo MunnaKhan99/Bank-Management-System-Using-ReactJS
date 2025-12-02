@@ -2,17 +2,28 @@ import React from 'react';
 import HomeTotalBalance from '../pages/HomeTotalBalance';
 import HomeDepoWithTotalTransaction from '../pages/HomeDepoWithTotalTransaction';
 import HomeRecentTransactions from '../pages/HomeRecentTransactions';
+import { useNavigate } from 'react-router';
 
-const Home = ({currentUser}) => {
-    const {name,email} = currentUser;
-    // console.log(currentUser);
+const Home = ({ currentUser, transactions,totalTransaction, totalDeposit,totalWithdraw }) => {
+    console.log("total deposit form home: ",totalDeposit);
+    console.log("total withdraw form home: ",totalWithdraw);
+    console.log("total transaction form home: ",totalTransaction);
+
+    const navigate = useNavigate();
+    if (!currentUser) {
+        navigate("/")
+        return null
+    }
+    const { name, email } = currentUser;
+
+    console.log(currentUser);
     return (
         <div>
             <h1>Welcome back,{name}!</h1>
             <p>{email}</p>
-            <HomeTotalBalance currentUser={currentUser} />
-            <HomeDepoWithTotalTransaction currentUser={currentUser}/>
-            <HomeRecentTransactions />
+            <HomeTotalBalance currentUser={currentUser}/>
+            <HomeDepoWithTotalTransaction totalDeposit ={totalDeposit} totalWithdraw ={totalWithdraw} totalTransaction={totalTransaction}/>
+            <HomeRecentTransactions currentUser={currentUser} transactions={transactions} />
         </div>
     );
 };

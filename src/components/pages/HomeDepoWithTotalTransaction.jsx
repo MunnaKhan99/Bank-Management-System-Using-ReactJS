@@ -4,8 +4,7 @@ import { LuCircleArrowUp } from "react-icons/lu";
 import { LuCircleArrowDown } from "react-icons/lu";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 
-const HomeDepoWithTotalTransaction = ({ currentUser }) => {
-    const { balance } = currentUser;
+const HomeDepoWithTotalTransaction = ({ totalDeposit,totalWithdraw,totalTransaction }) => {
     return (
         <div className={styles['home-depo-withdraw-container']}>
             <div className={styles['home-depo-card']}>
@@ -13,21 +12,21 @@ const HomeDepoWithTotalTransaction = ({ currentUser }) => {
                     <LuCircleArrowDown color="green" className="deposit-icon" />
                     <span>Deposit</span>
                 </div>
-                <p className={styles['home-depo-amount']}>${balance}</p>
+                <p className={styles['home-depo-amount']}>${totalDeposit}</p>
             </div>
             <div className={styles['home-depo-card']}>
                 <div className={styles['home-depo-top-item']}>
                     <LuCircleArrowUp color="red" className="withdraw-icon" />
                     <span>Withdraw</span>
                 </div>
-                <p className={styles['home-depo-amount']}>$</p>
+                <p className={styles['home-depo-amount']}>${totalWithdraw}</p>
             </div>
             <div className={styles['home-depo-card']}>
                 <div className={styles['home-depo-top-item']}>
                     <FaFileInvoiceDollar color="blue" className={styles['transaction-icon']} />
                     <span>Total Transaction</span>
                 </div>
-                <p className={styles['home-depo-amount]']}>$</p>
+                <p className={styles['home-depo-amount]']}>{totalTransaction}</p>
             </div>
 
         </div>

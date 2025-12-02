@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaDollarSign } from "react-icons/fa";
 import { MdRequestPage } from "react-icons/md";
 import styles from './withdraw.module.css';
+import { useNavigate } from 'react-router';
+import { FaArrowLeft } from "react-icons/fa";
 
-const Withdraw = () => {
+const Withdraw = ({ handleWithdraw, currentUser }) => {
+    const navigate = useNavigate();
+    console.log(currentUser.balance);
+    const { balance } = currentUser;
+    const [withdraw, setWithdraw] = useState(0);
+    const [description, setDescription] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleWithdraw(withdraw, description);
+
+        setWithdraw("")
+        setDescription("")
+    }
+    const handleWithCancel = (e) => {
+        e.preventDefault();
+        setWithdraw("");
+        setDescription("");
+    }
     return (
         <div>
-            <div className={styles.backLink}>Back to Dashboard</div>
+            <div className={styles.backLink} onClick={() => navigate("/")}><FaArrowLeft /><span>Back to Dashboard</span></div>
 
             <div className={styles.container}>
 
@@ -17,9 +37,9 @@ const Withdraw = () => {
                 </div>
 
                 <p className={styles.subtitle}>Take money from your account</p>
-                <p>Available Balance: $3434.67</p>
+                <p>Available Balance: ${balance}</p>
 
-                <div className={styles.form}>
+                <form className={styles.form} onSubmit={handleSubmit}>
 
                     {/* Amount */}
                     <div className={styles.inputField}>
@@ -40,6 +60,10 @@ const Withdraw = () => {
                                 step="0.01"
                                 required
                                 className={styles.inputBox}
+
+                                value={withdraw}
+                                onChange={(e) => setWithdraw(e.target.value)}
+
                             />
                         </div>
                     </div>
@@ -54,17 +78,20 @@ const Withdraw = () => {
                             <textarea
                                 className={styles.textArea}
                                 placeholder="Add a description..."
+
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
                     </div>
 
                     {/* Buttons */}
                     <div className={styles.btnRow}>
-                        <button className={styles.cancelBtn}>Cancel</button>
-                        <button className={styles.submitBtn}>Withdraw</button>
+                        <button type='button' className={styles.cancelBtn} onClick={handleWithCancel}>Cancel</button>
+                        <button type='submit' className={styles.submitBtn} >Withdraw</button>
                     </div>
 
-                </div>
+                </form>
             </div>
         </div>
     );

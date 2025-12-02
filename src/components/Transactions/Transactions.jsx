@@ -3,8 +3,10 @@ import { FaExchangeAlt } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import styles from "./transaction.module.css";
 
-const Transactions = ({ transactions }) => {
-    console.log(transactions)
+const Transactions = ({ transactions, currentUser }) => {
+
+
+
     return (
         <div>
 
@@ -31,46 +33,46 @@ const Transactions = ({ transactions }) => {
                 </div>
 
                 <div className={styles.list}>
-                    {transactions.map((tx, index) => (
-                        <div key={index} className={styles.item}>
+                    {transactions.filter(tx => tx.user === currentUser.email)
+                        .map((tx, index) => (
+                            <div key={index} className={styles.item}>
 
-                            <div className={styles.itemLeft}>
+                                <div className={styles.itemLeft}>
 
-                                {tx.type === "Deposit" ? (
-                                    <FaArrowDown className={`${styles.icon} ${styles.depositIcon}`} />
-                                ) : (
-                                    <FaArrowUp className={`${styles.icon} ${styles.withdrawIcon}`} />
-                                )}
+                                    {tx.type === "Deposit" ? (
+                                        <FaArrowDown className={`${styles.icon} ${styles.depositIcon}`} />
+                                    ) : (
+                                        <FaArrowUp className={`${styles.icon} ${styles.withdrawIcon}`} />
+                                    )}
 
-                                <div>
-                                    <p className={styles.name}>
-                                        {tx.type === "Deposit" ? "Deposit" : "Withdraw"}
-                                    </p>
-                                    <p className={styles.date}>{tx.date}</p>
+                                    <div>
+                                        <p className={styles.name}>
+                                            {tx.description}
+                                        </p>
+                                        <p className={styles.Date}>{tx.Date}</p>
+                                    </div>
+
                                 </div>
 
+                                <p
+                                    className={`${styles.amount} ${tx.type === "Deposit"
+                                            ? styles.depositAmount
+                                            : styles.withdrawAmount
+                                        }`}
+                                >
+                                    {tx.type === "Deposit" ? "+ $" : "- $"}
+                                    {tx.amount}
+                                </p>
+
                             </div>
-
-                            <p
-                                className={`${styles.amount} ${
-                                    tx.type === "Deposit"
-                                        ? styles.depositAmount
-                                        : styles.withdrawAmount
-                                }`}
-                            >
-                                {tx.type === "Deposit" ? "+ $" : "- $"}
-                                {tx.amount}
-                            </p>
-
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <hr className={styles.horaizontalLine} />
 
                 <div className={styles.totalTransaction}>
                     <p>Total Transaction</p>
-                    <p>{transactions.length}</p>
+                    <p>{transactions.filter(tx => tx.user === currentUser.email).length}</p>
                 </div>
             </div>
         </div>
