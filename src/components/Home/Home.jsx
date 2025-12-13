@@ -19,8 +19,8 @@ const Home = ({ currentUser, transactions,totalTransaction, totalDeposit,totalWi
     console.log(currentUser);
     return (
         <div>
-            <h1>Welcome back,{name}!</h1>
-            <p>{email}</p>
+            <h1 className='text-black text-3xl font-bold'>Welcome back,<span className='text-blue-800'>{name}!</span></h1>
+            <p className='text-blue-700'>{email}</p>
             <HomeTotalBalance currentUser={currentUser}/>
             <HomeDepoWithTotalTransaction totalDeposit ={totalDeposit} totalWithdraw ={totalWithdraw} totalTransaction={totalTransaction}/>
             <HomeRecentTransactions currentUser={currentUser} transactions={transactions} />

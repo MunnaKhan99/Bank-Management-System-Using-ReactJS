@@ -7,20 +7,23 @@ import { FaFileInvoiceDollar } from "react-icons/fa6";
 const HomeDepoWithTotalTransaction = ({ totalDeposit,totalWithdraw,totalTransaction }) => {
     return (
         <div className={styles['home-depo-withdraw-container']}>
+
             <div className={styles['home-depo-card']}>
                 <div className={styles['home-depo-top-item']}>
-                    <LuCircleArrowDown color="green" className="deposit-icon" />
+                    <LuCircleArrowDown color="green" className={styles["deposit-icon"]} />
                     <span>Deposit</span>
                 </div>
                 <p className={styles['home-depo-amount']}>${totalDeposit}</p>
             </div>
+
             <div className={styles['home-depo-card']}>
                 <div className={styles['home-depo-top-item']}>
-                    <LuCircleArrowUp color="red" className="withdraw-icon" />
+                    <LuCircleArrowUp color="red" className={styles["withdraw-icon"]} />
                     <span>Withdraw</span>
                 </div>
                 <p className={styles['home-depo-amount']}>${totalWithdraw}</p>
             </div>
+
             <div className={styles['home-depo-card']}>
                 <div className={styles['home-depo-top-item']}>
                     <FaFileInvoiceDollar color="blue" className={styles['transaction-icon']} />
