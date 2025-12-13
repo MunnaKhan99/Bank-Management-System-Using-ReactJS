@@ -64,18 +64,16 @@
 }
 
 .filterBtn {
-    padding: 8px 18px;
-    background: #F3F6FF;
-    border: 2px solid #DBEAFE;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: 8px 14px;
+    border: 1px solid #d1d5db;
+    background-color: white;
     cursor: pointer;
-    color: #4080FC;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.filterBtn:hover {
-    background: #dbe7ff;
-}
+
+
 
 /* ===================================================== */
 /* TRANSACTION LIST */
@@ -149,4 +147,11 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
+}
+
+.active {
+    background-color: #2563eb;
+    /* blue */
+    color: white;
+    border-color: #2563eb;
 }

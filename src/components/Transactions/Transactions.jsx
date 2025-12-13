@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaExchangeAlt } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import styles from "./transaction.module.css";
 
 const Transactions = ({ transactions, currentUser }) => {
 
+    const [filterType, setFilterType] = useState("ALL");
 
+    const userTransactions = transactions.filter(
+        tx => tx.user === currentUser.email
+    );
+
+    const filteredTransactions = userTransactions.filter(tx => {
+        if (filterType === 'ALL') {
+            return true;
+        }
+        return tx.type === filterType;
+    });
 
     return (
         <div>
@@ -26,53 +37,55 @@ const Transactions = ({ transactions, currentUser }) => {
                     </div>
 
                     <div className={styles.filterBar}>
-                        <button className={styles.filterBtn}>All</button>
-                        <button className={styles.filterBtn}>Deposit</button>
-                        <button className={styles.filterBtn}>Withdraw</button>
+                        <button className={`${styles.filterBtn} ${filterType === "ALL" ? styles.active : ""}`} onClick={() => setFilterType("ALL")}>All</button>
+                        <button className={`${styles.filterBtn} ${filterType === "Deposit" ? styles.active : ""}`} onClick={() => setFilterType("Deposit")}>Deposit</button>
+                        <button className={`${styles.filterBtn} ${filterType === "Withdraw" ? styles.active : ""}`} onClick={() => setFilterType("Withdraw")}>Withdraw</button>
                     </div>
                 </div>
 
                 <div className={styles.list}>
-                    {transactions.filter(tx => tx.user === currentUser.email)
-                        .map((tx, index) => (
-                            <div key={index} className={styles.item}>
+                    {filteredTransactions.map((tx, index) => (
+                        <div key={index} className={styles.item}>
 
-                                <div className={styles.itemLeft}>
+                            <div className={styles.itemLeft}>
 
-                                    {tx.type === "Deposit" ? (
-                                        <FaArrowDown className={`${styles.icon} ${styles.depositIcon}`} />
-                                    ) : (
-                                        <FaArrowUp className={`${styles.icon} ${styles.withdrawIcon}`} />
-                                    )}
+                                {tx.type === "Deposit" ? (
+                                    <FaArrowDown className={`${styles.icon} ${styles.depositIcon}`} />
+                                ) : (
+                                    <FaArrowUp className={`${styles.icon} ${styles.withdrawIcon}`} />
+                                )}
 
-                                    <div>
-                                        <p className={styles.name}>
-                                            {tx.description}
-                                        </p>
-                                        <p className={styles.Date}>{tx.Date}</p>
-                                    </div>
-
+                                <div>
+                                    <p className={styles.name}>
+                                        {tx.description}
+                                    </p>
+                                    <p className={styles.Date}>{tx.Date}</p>
                                 </div>
 
-                                <p
-                                    className={`${styles.amount} ${tx.type === "Deposit"
-                                            ? styles.depositAmount
-                                            : styles.withdrawAmount
-                                        }`}
-                                >
-                                    {tx.type === "Deposit" ? "+ $" : "- $"}
-                                    {tx.amount}
-                                </p>
-
                             </div>
-                        ))}
+
+                            <p
+                                className={`${styles.amount} ${tx.type === "Deposit"
+                                    ? styles.depositAmount
+                                    : styles.withdrawAmount
+                                    }`}
+                            >
+                                {tx.type === "Deposit" ? "+ $" : "- $"}
+                                {tx.amount}
+
+                            </p>
+
+
+                        </div>
+
+                    ))}
                 </div>
 
                 <hr className={styles.horaizontalLine} />
 
                 <div className={styles.totalTransaction}>
                     <p>Total Transaction</p>
-                    <p>{transactions.filter(tx => tx.user === currentUser.email).length}</p>
+                    <p>{filteredTransactions.length}</p>
                 </div>
             </div>
         </div>
